@@ -708,6 +708,39 @@
 
   .btn-donate:hover { background: var(--gold-light); transform: translateY(-1px); }
 
+  .instagram-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.75rem;
+    border: 1px solid rgba(200,146,42,0.35);
+    color: var(--gold-dark);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+  }
+  .instagram-link:hover {
+    background: rgba(200,146,42,0.08);
+    border-color: var(--gold);
+    color: var(--brown);
+  }
+
+  .footer-instagram {
+    display: inline-flex;
+    align-items: center;
+    color: var(--gold-light);
+    font-size: 0.88rem;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+  }
+  .footer-instagram:hover { opacity: 1; text-decoration: underline; }
+
   .trust-note {
     font-size: 0.78rem;
     color: var(--text-mid);
@@ -1235,6 +1268,11 @@
           <span data-i18n="donate_btn">Quero Contribuir — Falar com a Igreja</span>
         </button>
 
+        <a class="instagram-link" href="https://www.instagram.com/igrejabatistabelempa?igsh=MXg1ZDRuaG5pZjFmeA==" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:1.1em;height:1.1em;vertical-align:middle;margin-right:0.4em;"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+          <span data-i18n="insta_btn">Siga-nos no Instagram</span>
+        </a>
+
         <p class="trust-note" data-i18n="trust_note">
           Suas informações são usadas apenas para comunicação com a igreja.<br>
           Nenhum dado financeiro é armazenado aqui.
@@ -1314,7 +1352,11 @@
     "Que Deus os abençoe e abençoe esta obra vital em Belém."<br>
     — Pastor Carlos Chaves
   </p>
-  <p style="margin-top: 1.5rem; font-size: 0.78rem;" data-i18n="footer_partner">
+  <a class="footer-instagram" href="https://www.instagram.com/igrejabatistabelempa?igsh=MXg1ZDRuaG5pZjFmeA==" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:1em;height:1em;vertical-align:middle;margin-right:0.35em;"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+    @igrejabatistabelempa
+  </a>
+  <p style="margin-top: 1rem; font-size: 0.78rem;" data-i18n="footer_partner">
     Em parceria com a <a href="#">Igreja Batista Central de Garça</a> ·
     Dúvidas? <a href="mailto:contato@igrejabatistabelem.org.br">contato@igrejabatistabelem.org.br</a>
   </p>
@@ -1381,6 +1423,7 @@
       pix_or: 'Ou pelo botão abaixo para contato direto:',
       donate_btn: 'Quero Contribuir — Falar com a Igreja',
       trust_note: 'Suas informações são usadas apenas para comunicação com a igreja.<br>Nenhum dado financeiro é armazenado aqui.',
+      insta_btn: 'Siga-nos no Instagram',
       name_placeholder: 'Seu nome completo',
       amount_placeholder: 'R$ Outro valor',
       imp_label: 'O que já foi feito',
@@ -1455,6 +1498,7 @@
       pix_or: 'Or use the button below for direct contact:',
       donate_btn: 'I Want to Give — Contact the Church',
       trust_note: 'Your information is used only for communication with the church.<br>No financial data is stored here.',
+      insta_btn: 'Follow us on Instagram',
       name_placeholder: 'Your full name',
       amount_placeholder: 'Custom amount',
       imp_label: 'What has been done',
