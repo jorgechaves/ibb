@@ -228,6 +228,86 @@
     background: var(--white);
   }
 
+  /* GALERIA */
+  .galeria {
+    background: var(--gray-light);
+    padding: 4rem 2rem;
+  }
+
+  .galeria .section-label {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .galeria .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .galeria-grid img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .galeria-grid img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox.active {
+    display: flex;
+  }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    line-height: 1;
+    background: none;
+    border: none;
+  }
+
+  @media (max-width: 600px) {
+    .galeria-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .galeria-grid img {
+      height: 150px;
+    }
+  }
+
   .historia-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -816,6 +896,33 @@
   </div>
 </section>
 
+<!-- GALERIA -->
+<section class="galeria">
+  <div class="container">
+    <p class="section-label">Registros</p>
+    <h2 class="section-title">Nossa história<br>em imagens</h2>
+    <div class="galeria-grid">
+      <img src="assets/antes-1.jpg" alt="Antes da restauração 1" onclick="abrirLightbox(this.src)">
+      <img src="assets/antes-2.jpg" alt="Antes da restauração 2" onclick="abrirLightbox(this.src)">
+      <img src="assets/antes-3.jpg" alt="Antes da restauração 3" onclick="abrirLightbox(this.src)">
+      <img src="assets/durante-1.jpg" alt="Durante a restauração 1" onclick="abrirLightbox(this.src)">
+      <img src="assets/durante-2.jpg" alt="Durante a restauração 2" onclick="abrirLightbox(this.src)">
+      <img src="assets/durante-3.jpg" alt="Durante a restauração 3" onclick="abrirLightbox(this.src)">
+      <img src="assets/durante-4.jpg" alt="Durante a restauração 4" onclick="abrirLightbox(this.src)">
+      <img src="assets/depois-comunidade.jpg" alt="Comunidade reunida" onclick="abrirLightbox(this.src)">
+      <img src="assets/depois-palco.jpg" alt="Palco restaurado" onclick="abrirLightbox(this.src)">
+      <img src="assets/belem-cirio.jpg" alt="Belém — Círio" onclick="abrirLightbox(this.src)">
+      <img src="assets/hero-culto.jpg" alt="Culto na igreja" onclick="abrirLightbox(this.src)">
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="fecharLightbox()">
+  <button class="lightbox-close" onclick="fecharLightbox()">&times;</button>
+  <img id="lightbox-img" src="" alt="Foto ampliada">
+</div>
+
 <!-- NECESSIDADES -->
 <section class="necessidades" id="necessidades">
   <div class="container">
@@ -1078,6 +1185,20 @@
     const msg = encodeURIComponent('Olá! Gostaria de contribuir com ' + amount + ' para a obra da Igreja Batista Belém. Como posso proceder?');
     window.open('https://wa.me/5591982434453?text=' + msg, '_blank');
   }
+
+  function abrirLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+
+  function fecharLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.getElementById('lightbox-img').src = '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') fecharLightbox();
+  });
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
